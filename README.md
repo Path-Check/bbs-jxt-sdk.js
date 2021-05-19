@@ -1,6 +1,6 @@
 # Verifiable QR SDK for BBS+ on CBOR-LD Credentials
 
-JavaScript Implementation of W3C Verifiable QR Credentials with BBS+ -> CBOR-LD -> QR. 
+JavaScript Implementation of W3C Verifiable QR Credentials with BBS+ -> JSONXT -> QR. 
 
 # Install
 
@@ -30,27 +30,46 @@ const TEST_PAYLOAD = {
     "https://w3id.org/pathogen/v1",
     "https://w3id.org/security/bbs/v1"
   ],
-  "id": "http://example.org/credentials/",
   "type": [
     "VerifiableCredential"
   ],
-  "expirationDate": "2021-02-05T20:29:37Z",
   "credentialSubject": {
-    "type": "DGCProofOfCovidTest",
-    "testInformation": {
-      "type": "DGCTestInformation",
-      "testType": "loinc#LP217198-3",
-      "testResult": "POS",
-      "testCenter": "Hospital Na Františku Prague",
-      "testValidatorId": "test-id",
-      "countryOfTestAdminstration": "it"
-    },
+    "@context": [
+      "https://w3id.org/pathogen/v1"
+    ],
+    "type": "DGCProofOfVaccination",
+    "id": "urn:uvci:01:NL:PlA8UWS60Z4RZXVALl6GAZ",
+    "issuerName": "Ministry of VWS",
     "personalInformation": {
+      "@context": [
+        "https://w3id.org/pathogen/v1"
+      ],
       "type": "DGCSubject",
-      "familyName": "Schmidt",
-      "givenName": "Abdiel",
-      "birthDate": "1987-07-07",
-      "gender": "F"
+      "birthDate": "2009-02-28",
+      "familyName": "d'ArsÃ¸ns - van Halen",
+      "givenName": "FranÃ§ois-Joan",
+      "stdFamilyName": "DARSONS<VAN<HALEN",
+      "stdGivenName": "FRANCOIS<JOAN"
+    },
+    "vaccinationInformation": {
+      "@context": [
+        "https://w3id.org/pathogen/v1"
+      ],
+      "type": "DGCVaccinationInformation",
+      "countryOfVaccination": "NL",
+      "dateOfVaccination": "2021-05-18",
+      "diseaseProtectedFrom": "840539006",
+      "order": "2 of 2",
+      "prophylaxis": "1119349007",
+      "vaccine": {
+        "@context": [
+          "https://w3id.org/pathogen/v1"
+        ],
+        "type": "DGCVaccine",
+        "code": "1119349007",
+        "marketingAuthHolder": "ORG-100030215",
+        "medicinalProductName": "EU/1/20/1528"
+      }
     }
   }
 };
