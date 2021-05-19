@@ -45,8 +45,8 @@ const TEST_PAYLOAD = {
 
 const SIGNED_TEST_PAYLOAD = {
   issuer: 'did:example:489398593',
-  issuanceDate: '2021-05-19T13:50:11.852Z',
-  expirationDate: '2023-05-19T04:00:00.000Z',
+  issuanceDate: '2021-05-19T16:10:11Z',
+  expirationDate: '2023-05-19T04:00:00Z',
   '@context': [
     'https://www.w3.org/2018/credentials/v1',
     'https://w3id.org/pathogen/v1',
@@ -81,9 +81,9 @@ const SIGNED_TEST_PAYLOAD = {
   },
   proof: {
     type: 'BbsBlsSignature2020',
-    created: '2021-05-19T13:50:11Z',
+    created: '2021-05-19T16:10:11Z',
     proofPurpose: 'assertionMethod',
-    proofValue: 'qcFTami/heD/8LYtOMZEItIki+dyZVTU44QnFJ6BqftnuCHSAeIzKo1jM56y3l97WeCYSo2+1gKi0zCEff9LnbWmgMULQKP1YP7PYNRsgbpKjwCR6HkIi/OzLCYMAMdcSISeXxOP0lsfy1HTspQ/jQ==',
+    proofValue: 'tXPYwy6d/TkXsRjPl7DIFnj5XN2QIwb4f9MFZdnCiUxx4aw8GzhXwjyulJzneTgHGbqow8TlmtmDEYZQvU0iin5d8F2vkmVryXx1ui6vAflRcF+FnR+aatEoOSgvm/5S5PilmQFTWQ1utMsdS3XdMQ==',
     verificationMethod: 'did:example:489398593#test'
   }
 };
@@ -233,12 +233,12 @@ const DGCProofOfCovidTest = {
       "type": "DGCTestInformation",
       "countryOfTestAdminstration": "NL",
       "diseaseTestedFrom": "840539006",
-      "sampleCollectionDateTime": "2021-04-13T14:20:00+00:00",
+      "sampleCollectionDateTime": "2021-04-13T14:20:00Z",
       "testCenter": "GGD FryslÃ¢n, L-Heliconweg",
       "testManufacturer": "1232",
       "testName": "COVID PCR",
       "testResult": "260415000",
-      "testResultDate": "2021-04-13T14:40:01+00:00",
+      "testResultDate": "2021-04-13T14:40:01Z",
       "testType": "LP217198-3"
     }
   }
