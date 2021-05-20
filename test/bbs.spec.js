@@ -43,8 +43,8 @@ const TEST_PAYLOAD = {
 };
 
 const SIGNED_TEST_PAYLOAD = {
-  issuer: 'did:web:pcf.pw:1A8',
-  issuanceDate: '2021-05-20T16:10:26Z',
+  issuer: 'did:web:PCF.PW:1A8',
+  issuanceDate: '2021-05-20T18:30:46Z',
   expirationDate: '2023-05-20T04:00:00Z',
   '@context': [
     'https://www.w3.org/2018/credentials/v1',
@@ -79,16 +79,16 @@ const SIGNED_TEST_PAYLOAD = {
   },
   proof: {
     type: 'BbsBlsSignature2020',
-    created: '2021-05-20T16:10:26Z',
+    created: '2021-05-20T18:30:46Z',
     proofPurpose: 'assertionMethod',
-    proofValue: 'or2704w1xNLib2eCIdZ/UlkODd039WG9dph+XPiKkIcTjt4NqL9x69en5ZUZffBSYNWFSrZgb0BzmJCcLP7qW46cxZFecG9iFtoe/qe7LAkkv+ruLI5MUTb79QlW9iB7GauR3QfilsFgQavDjlOsEA==',
-    verificationMethod: 'did:web:pcf.pw:1A8#web'
+    proofValue: 'iaIx3/VJamQdbvxapcMfch507pZDSuqu3SALH5Qzf3GsGV4Ymq/gwlsywxyQ+UaHUcqWakcL+OnfDazoP3DzejdW54EtGLFTAlIJBz+rSTw6vCWq7Q8dPw41scYcWW7Ky2PIPEQjmNnsoy423auGzQ==',
+    verificationMethod: 'did:web:PCF.PW:1A8#web'
   }
 };
 
 const mockKeyPair = {
-  id: "did:web:pcf.pw:1A8#web",
-  controller: "did:web:pcf.pw:1A8",
+  id: "did:web:PCF.PW:1A8#web",
+  controller: "did:web:PCF.PW:1A8",
   privateKeyBase58: "5D6Pa8dSwApdnfg7EZR8WnGfvLDCZPZGsZ5Y1ELL9VDj",
   publicKeyBase58: "oqpWYKaZD9M1Kbe94BVXpr8WTdFBNZyKv48cziTiQUeuhm7sBhCABMyYG4kcMrseC68YTFFgyhiNeBKjzdKk9MiRWuLv5H4FFujQsQK2KTAtzU8qTBiZqBHMmnLF4PL7Ytu"
 }
@@ -130,7 +130,7 @@ describe('BBS Crypto', function() {
 
 describe('BBS Data Minimization', function() {
   it('should pack And unpack', async function() {
-    const packed = await pack(SIGNED_TEST_PAYLOAD, "pcf.org", "dgc.test", "1");
+    const packed = await pack(SIGNED_TEST_PAYLOAD, "pcf.pw", "dgc.test", "1");
     const unpacked = await unpack(packed);
     expect(unpacked).to.eql(SIGNED_TEST_PAYLOAD);
   });
@@ -138,7 +138,7 @@ describe('BBS Data Minimization', function() {
 
 describe('BBS Soup to Nuts', function() {
   it('should Sign Pack And Unpack Verify JSON', async function() {
-    const uri = await signAndPack(TEST_PAYLOAD, mockKeyPair, "pcf.org", "dgc.test", "1");
+    const uri = await signAndPack(TEST_PAYLOAD, mockKeyPair, "pcf.pw", "dgc.test", "1");
     const resultJSON = await unpackAndVerify(uri);
 
     expect(resultJSON.proof).to.not.be.null;
@@ -295,7 +295,7 @@ const DGCProofOfVaccination = {
 
 describe('DGC Soup to Nuts', function() { 
   it('should Sign Pack And Unpack Verify DGCProofOfRecovery', async function() {
-    const uri = await signAndPack(DGCProofOfRecovery, mockKeyPair,"pcf.org", "dgc.recv", "1");
+    const uri = await signAndPack(DGCProofOfRecovery, mockKeyPair,"pcf.pw", "dgc.recv", "1");
     const resultJSON = await unpackAndVerify(uri);
 
     expect(resultJSON.proof).to.not.be.null;
@@ -313,7 +313,7 @@ describe('DGC Soup to Nuts', function() {
   });
   
   it('should Sign Pack And Unpack Verify DGCProofCOVIDTest', async function() {
-    const uri = await signAndPack(DGCProofOfCovidTest, mockKeyPair,"pcf.org", "dgc.test", "1");
+    const uri = await signAndPack(DGCProofOfCovidTest, mockKeyPair,"pcf.pw", "dgc.test", "1");
     const resultJSON = await unpackAndVerify(uri);
 
     expect(resultJSON.proof).to.not.be.null;
@@ -331,7 +331,7 @@ describe('DGC Soup to Nuts', function() {
   });
 
   it('should Sign Pack And Unpack Verify DGCProofOfVaccination', async function() {
-    const uri = await signAndPack(DGCProofOfVaccination, mockKeyPair, "pcf.org", "dgc.vax", "1");
+    const uri = await signAndPack(DGCProofOfVaccination, mockKeyPair, "pcf.pw", "dgc.vax", "1");
     const resultJSON = await unpackAndVerify(uri);
 
     expect(resultJSON.proof).to.not.be.null;
