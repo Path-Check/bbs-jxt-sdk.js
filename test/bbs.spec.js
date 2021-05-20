@@ -132,7 +132,7 @@ describe('BBS Crypto', function() {
 
 describe('BBS Data Minimization', function() {
   it('should pack And unpack', async function() {
-    const packed = await pack(SIGNED_TEST_PAYLOAD);
+    const packed = await pack(SIGNED_TEST_PAYLOAD, "pcf.org", "dgc.test", "1");
     const unpacked = await unpack(packed);
     expect(unpacked).to.eql(SIGNED_TEST_PAYLOAD);
   });
@@ -140,7 +140,7 @@ describe('BBS Data Minimization', function() {
 
 describe('BBS Soup to Nuts', function() {
   it('should Sign Pack And Unpack Verify JSON', async function() {
-    const uri = await signAndPack(TEST_PAYLOAD, mockKeyPair);
+    const uri = await signAndPack(TEST_PAYLOAD, mockKeyPair, "pcf.org", "dgc.test", "1");
     const resultJSON = await unpackAndVerify(uri);
 
     expect(resultJSON.proof).to.not.be.null;
@@ -279,7 +279,8 @@ const DGCProofOfVaccination = {
       "countryOfVaccination": "NL",
       "dateOfVaccination": "2021-05-18",
       "diseaseProtectedFrom": "840539006",
-      "order": "2 of 2",
+      "dose": 2,
+      "totalDoses": 2,
       "prophylaxis": "1119349007",
       "vaccine": {
         "@context": [
@@ -296,7 +297,7 @@ const DGCProofOfVaccination = {
 
 describe('DGC Soup to Nuts', function() {
   it('should Sign Pack And Unpack Verify DGCProofOfRecovery', async function() {
-    const uri = await signAndPack(DGCProofOfRecovery, mockKeyPair);
+    const uri = await signAndPack(DGCProofOfRecovery, mockKeyPair,"pcf.org", "dgc.recv", "1");
     const resultJSON = await unpackAndVerify(uri);
 
     expect(resultJSON.proof).to.not.be.null;
@@ -314,7 +315,7 @@ describe('DGC Soup to Nuts', function() {
   });
   
   it('should Sign Pack And Unpack Verify DGCProofCOVIDTest', async function() {
-    const uri = await signAndPack(DGCProofOfCovidTest, mockKeyPair);
+    const uri = await signAndPack(DGCProofOfCovidTest, mockKeyPair,"pcf.org", "dgc.test", "1");
     const resultJSON = await unpackAndVerify(uri);
 
     expect(resultJSON.proof).to.not.be.null;
@@ -332,7 +333,7 @@ describe('DGC Soup to Nuts', function() {
   });
 
   it('should Sign Pack And Unpack Verify DGCProofOfVaccination', async function() {
-    const uri = await signAndPack(DGCProofOfVaccination, mockKeyPair);
+    const uri = await signAndPack(DGCProofOfVaccination, mockKeyPair, "pcf.org", "dgc.vax", "1");
     const resultJSON = await unpackAndVerify(uri);
 
     expect(resultJSON.proof).to.not.be.null;
