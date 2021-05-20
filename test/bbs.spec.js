@@ -44,7 +44,7 @@ const TEST_PAYLOAD = {
 
 const SIGNED_TEST_PAYLOAD = {
   issuer: 'did:web:PCF.PW:1A8',
-  issuanceDate: '2021-05-20T18:30:46Z',
+  issuanceDate: '2021-05-20T19:03:23Z',
   expirationDate: '2023-05-20T04:00:00Z',
   '@context': [
     'https://www.w3.org/2018/credentials/v1',
@@ -79,15 +79,15 @@ const SIGNED_TEST_PAYLOAD = {
   },
   proof: {
     type: 'BbsBlsSignature2020',
-    created: '2021-05-20T18:30:46Z',
+    created: '2021-05-20T19:03:23Z',
     proofPurpose: 'assertionMethod',
-    proofValue: 'iaIx3/VJamQdbvxapcMfch507pZDSuqu3SALH5Qzf3GsGV4Ymq/gwlsywxyQ+UaHUcqWakcL+OnfDazoP3DzejdW54EtGLFTAlIJBz+rSTw6vCWq7Q8dPw41scYcWW7Ky2PIPEQjmNnsoy423auGzQ==',
-    verificationMethod: 'did:web:PCF.PW:1A8#web'
+    proofValue: 'mMLC5eaON119Vp9rSeQIP9TFCCRnsG52kMUofpRV0FRl1tL/ZLI6ywhsUADc8/JBTj4wMQ13bRqz92RZVsPGMqdQmk6Q4GTNG7wgvQJaaP8kk1ixII3jZcciR9yQS9WIL2CCCZSrKx6nSwcRxOkpTg==',
+    verificationMethod: 'did:web:PCF.PW:1A8#DEMO'
   }
-};
+}
 
 const mockKeyPair = {
-  id: "did:web:PCF.PW:1A8#web",
+  id: "did:web:PCF.PW:1A8#DEMO",
   controller: "did:web:PCF.PW:1A8",
   privateKeyBase58: "5D6Pa8dSwApdnfg7EZR8WnGfvLDCZPZGsZ5Y1ELL9VDj",
   publicKeyBase58: "oqpWYKaZD9M1Kbe94BVXpr8WTdFBNZyKv48cziTiQUeuhm7sBhCABMyYG4kcMrseC68YTFFgyhiNeBKjzdKk9MiRWuLv5H4FFujQsQK2KTAtzU8qTBiZqBHMmnLF4PL7Ytu"
@@ -342,6 +342,7 @@ describe('DGC Soup to Nuts', function() {
     resultJSON["@context"] = resultJSON["@context"].filter(function(item) {
         return item !== "https://w3id.org/security/suites/ed25519-2020/v1"
     })
+
     delete resultJSON["issuanceDate"]; // These change when tests run
     delete resultJSON["expirationDate"]; // These change when tests run
     delete resultJSON["issuer"]; // These change when tests run
