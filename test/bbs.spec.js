@@ -10,7 +10,6 @@ const TEST_PAYLOAD = {
     "https://w3id.org/pathogen/v1",
     "https://w3id.org/security/bbs/v1"
   ],
-  "id": "http://example.org/credentials/",
   "type": [
     "VerifiableCredential"
   ],
@@ -44,15 +43,14 @@ const TEST_PAYLOAD = {
 };
 
 const SIGNED_TEST_PAYLOAD = {
-  issuer: 'did:example:489398593',
-  issuanceDate: '2021-05-19T16:10:11Z',
-  expirationDate: '2023-05-19T04:00:00Z',
+  issuer: 'did:web:pcf.pw:1A8',
+  issuanceDate: '2021-05-20T16:10:26Z',
+  expirationDate: '2023-05-20T04:00:00Z',
   '@context': [
     'https://www.w3.org/2018/credentials/v1',
     'https://w3id.org/pathogen/v1',
     'https://w3id.org/security/bbs/v1'
   ],
-  id: 'http://example.org/credentials/',
   type: [ 'VerifiableCredential' ],
   credentialSubject: {
     '@context': [ 'https://w3id.org/pathogen/v1' ],
@@ -81,16 +79,16 @@ const SIGNED_TEST_PAYLOAD = {
   },
   proof: {
     type: 'BbsBlsSignature2020',
-    created: '2021-05-19T16:10:11Z',
+    created: '2021-05-20T16:10:26Z',
     proofPurpose: 'assertionMethod',
-    proofValue: 'tXPYwy6d/TkXsRjPl7DIFnj5XN2QIwb4f9MFZdnCiUxx4aw8GzhXwjyulJzneTgHGbqow8TlmtmDEYZQvU0iin5d8F2vkmVryXx1ui6vAflRcF+FnR+aatEoOSgvm/5S5PilmQFTWQ1utMsdS3XdMQ==',
-    verificationMethod: 'did:example:489398593#test'
+    proofValue: 'or2704w1xNLib2eCIdZ/UlkODd039WG9dph+XPiKkIcTjt4NqL9x69en5ZUZffBSYNWFSrZgb0BzmJCcLP7qW46cxZFecG9iFtoe/qe7LAkkv+ruLI5MUTb79QlW9iB7GauR3QfilsFgQavDjlOsEA==',
+    verificationMethod: 'did:web:pcf.pw:1A8#web'
   }
 };
 
 const mockKeyPair = {
-  id: "did:example:489398593#test",
-  controller: "did:example:489398593",
+  id: "did:web:pcf.pw:1A8#web",
+  controller: "did:web:pcf.pw:1A8",
   privateKeyBase58: "5D6Pa8dSwApdnfg7EZR8WnGfvLDCZPZGsZ5Y1ELL9VDj",
   publicKeyBase58: "oqpWYKaZD9M1Kbe94BVXpr8WTdFBNZyKv48cziTiQUeuhm7sBhCABMyYG4kcMrseC68YTFFgyhiNeBKjzdKk9MiRWuLv5H4FFujQsQK2KTAtzU8qTBiZqBHMmnLF4PL7Ytu"
 }
@@ -295,7 +293,7 @@ const DGCProofOfVaccination = {
   }
 }
 
-describe('DGC Soup to Nuts', function() {
+describe('DGC Soup to Nuts', function() { 
   it('should Sign Pack And Unpack Verify DGCProofOfRecovery', async function() {
     const uri = await signAndPack(DGCProofOfRecovery, mockKeyPair,"pcf.org", "dgc.recv", "1");
     const resultJSON = await unpackAndVerify(uri);
