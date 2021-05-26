@@ -7,7 +7,7 @@
     "webpack": "webpack --config webpack.config.js"
   },
   "author": "Vitor Pamplona",
-  "license": "GPL",
+  "license": "GPL-3.0-only",
   "files": [
     "lib/*.js"
   ],
@@ -15,18 +15,11 @@
   "module": "lib/main.js",
   "dependencies": {
     "@mattrglobal/jsonld-signatures-bbs": "^0.9.0",
-    "bs58": "4.0.1",
     "cross-fetch": "^3.1.4",
     "esm": "^3.2.25",
-    "hi-base32": "^0.5.1",
-    "jsonld": "3.1.0",
-    "jsonld-signatures": "5.0.1",
     "jsonxt": "^0.0.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/node": "^7.14.2",
-    "@babel/preset-env": "^7.14.2",
     "chai": "^4.3.4",
     "mocha": "^8.4.0",
     "webpack": "^4.44.1",
