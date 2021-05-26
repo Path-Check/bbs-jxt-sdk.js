@@ -1,5 +1,5 @@
 {
-  "name": "bbs-cborld-sdk",
+  "name": "bbs-jxt-sdk",
   "version": "0.0.6",
   "description": "Verifiable QR SDK for BBS+ Vaccination Credentials with CBOR-LD",
   "scripts": {
@@ -17,7 +17,7 @@
     "@mattrglobal/jsonld-signatures-bbs": "^0.9.0",
     "cross-fetch": "^3.1.4",
     "esm": "^3.2.25",
-    "jsonxt": "^0.0.12"
+    "jsonxt": "^0.0.13"
   },
   "devDependencies": {
     "chai": "^4.3.4",
