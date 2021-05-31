@@ -337,7 +337,6 @@ const CombinedDGC = {
                 "dateOfVaccination": "2021-05-05",
                 "dose": 1,
                 "totalDoses": 2,
-                "code": "1119349007",
                 "marketingAuthHolder": "ORG-100030215",
                 "medicinalProductName": "EU/1/20/1528"
             }
@@ -355,7 +354,6 @@ const CombinedDGC = {
                 "dateOfVaccination": "2021-05-25",
                 "dose": 2,
                 "totalDoses": 2,
-                "code": "1119349007",
                 "marketingAuthHolder": "ORG-100030215",
                 "medicinalProductName": "EU/1/20/1528"
             }
