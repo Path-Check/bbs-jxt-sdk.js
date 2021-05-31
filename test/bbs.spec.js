@@ -372,7 +372,6 @@ const CombinedDGC = {
                 "testManufacturer": "1232",
                 "testType": "LP217198-3",
                 "sampleCollectionDateTime": "2021-02-13T14:20:00Z",
-                "testResultDate": "2021-02-13T14:40:01Z",
                 "testResult": "260415000",
                 "testCenter": "GGD Fryslân, L-Heliconweg"
             }
@@ -390,7 +389,6 @@ const CombinedDGC = {
                 "testManufacturer": "1343",
                 "testType": "LP6464-4",
                 "sampleCollectionDateTime": "2021-04-13T14:20:00Z",
-                "testResultDate": "2021-04-13T14:40:01Z",
                 "testResult": "260373001",
                 "testCenter": "GGD Fryslân, L-Heliconweg"
             }
