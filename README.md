@@ -1,6 +1,6 @@
 # Verifiable QR SDK for BBS+ on JSON-XT Credentials
 
-JavaScript Implementation of W3C Verifiable QR Credentials with BBS+ -> JSONXT -> QR. 
+JavaScript Implementation of W3C Verifiable QR Credentials with BBS+ and minimization to a QR code with [JSON-XT](https://jsonxt.io/). 
 
 # Install
 
