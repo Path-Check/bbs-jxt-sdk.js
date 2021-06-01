@@ -4,24 +4,24 @@ const bs58 = require('bs58');
 async function generatePublicKeyDidDocument(keyPair) {
   return {
     "@context": "https://w3id.org/security/v2",
-    id: keyPair.id,
+    id: keyPair.controller,
     assertionMethod: [ {  
-      id: keyPair.controller,
-      controller: keyPair.id,
+      id: keyPair.id,
+      controller: keyPair.controller,
       publicKeyBase58: keyPair.publicKeyBase58
     }],
     authentication: [ {  
-      id: keyPair.controller,
-      controller: keyPair.id,
+      id: keyPair.id,
+      controller: keyPair.controller,
       publicKeyBase58: keyPair.publicKeyBase58
     } ]
   };
 } 
 
-async function generateKeyPair(domainName, keyName, controllerName) {
-  let keyId = `did:web:${domainName}:${keyName}`;
-  let controllerId = `did:web:${domainName}:${keyName}#${controllerName}`
-
+async function generateKeyPair(domainName, controllerName, keyName) {
+  let controllerId = `did:web:${domainName}:${controllerName}`;
+  let keyId = `${controllerId}#${keyName}`
+  
   const privateKey = await Bls12381G2KeyPair.generate({id: keyId, controller: controllerId});
   const keyPair = {
       id: privateKey.id,
@@ -33,8 +33,8 @@ async function generateKeyPair(domainName, keyName, controllerName) {
   return keyPair;
 }
 
-async function generateInstructions(domainName, keyName, controllerName) {
-  generateKeyPair(DOMAIN, KEY_NAME, CONTROLLER_NAME).then( keyPair => {
+async function generateInstructions(domainName, controllerName, keyName) {
+  generateKeyPair(DOMAIN, CONTROLLER_NAME, KEY_NAME).then( keyPair => {
       generatePublicKeyDidDocument(keyPair).then( didDocument => {
         console.log("\n");
         console.log("*******************************************************************************");
@@ -50,12 +50,12 @@ async function generateInstructions(domainName, keyName, controllerName) {
     });
 }
 
-if (process.argv < 5) {
-  console.log("3 arguments required: DOMAIN KEY_NAME CONTROLLER_NAME\nExample: node scripts/generateKeys.js PCF.PW 1A10 WEB")
+if (process.argv.length < 5) {
+  console.log("\n3 arguments required: DOMAIN CONTROLLER_NAME KEY_NAME\nExample: node scripts/generateKeys.js PCF.PW 1A10 WEB\n")
 } else {
-  var [DOMAIN, KEY_NAME, CONTROLLER_NAME] = process.argv.slice(2);
+  var [DOMAIN, CONTROLLER_NAME, KEY_NAME] = process.argv.slice(2);
 
-  generateInstructions(DOMAIN.toUpperCase(), KEY_NAME.toUpperCase(), CONTROLLER_NAME.toUpperCase());
+  generateInstructions(DOMAIN.toUpperCase(), CONTROLLER_NAME.toUpperCase(), KEY_NAME.toUpperCase());
 }
 
 

@@ -28,8 +28,8 @@ Returns:
 Here are your SECRET keys. Key this private and use it to sign new packages.
 *******************************************************************************/
 {
-  id: 'did:web:PCF.PW:1A10',
-  controller: 'did:web:PCF.PW:1A10#WEB1',
+  id: 'did:web:PCF.PW:1A10#WEB1',
+  controller: 'did:web:PCF.PW:1A10',
   privateKeyBase58: '3AmVDMSEiZ9s79fCrHHhTuYMGSfeHvbZ92NhMh3AqrxW',
   publicKeyBase58: 'yX1rjAqqRhUk8BTgVDdFn9buUZ59pmRpJouc8raqAXztwooW3Gs7Fsy8GhDWUdZkdEFjdDbGk925zMSQ6xkrCbwzUrDnzpe8sPLB7gi15Gva4zRN77GiqRgDLtjRDVkXmmv'
 }
@@ -92,8 +92,8 @@ With the keys:
 
 ```js
 const keyPair = {
-  id: 'did:web:PCF.PW:1A10',
-  controller: 'did:web:PCF.PW:1A10#WEB1',
+  id: 'did:web:PCF.PW:1A10#WEB1',
+  controller: 'did:web:PCF.PW:1A10',
   privateKeyBase58: '3AmVDMSEiZ9s79fCrHHhTuYMGSfeHvbZ92NhMh3AqrxW',
   publicKeyBase58: 'yX1rjAqqRhUk8BTgVDdFn9buUZ59pmRpJouc8raqAXztwooW3Gs7Fsy8GhDWUdZkdEFjdDbGk925zMSQ6xkrCbwzUrDnzpe8sPLB7gi15Gva4zRN77GiqRgDLtjRDVkXmmv'
 }
