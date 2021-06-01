@@ -2,6 +2,7 @@
   "name": "@pathcheck/bbs-jxt-sdk",
   "version": "0.1.0",
   "description": "Verifiable QR SDK for BBS+ Vaccination Credentials with CBOR-LD",
+  "private": false,
   "scripts": {
     "test": "mocha",
     "keys": "node scripts/generateKeys.js",
