@@ -62,8 +62,28 @@ Here are your PUBLIC DID document. Save this part as a .json and upload it to PC
 
 Copy the second segment (PUBLIC DID DOCUMENT) as a JSON file to your `domain/keyName/did.json`
 
-The DID:WEB Resolver will point to that address to download your public keys and verify the package. 
+```json
+{
+  "@context": "https://w3id.org/security/v2",
+  "id": "did:web:PCF.PW:1A10",
+  "assertionMethod": [
+    {
+      "id": "did:web:PCF.PW:1A10#WEB1",
+      "controller": "did:web:PCF.PW:1A10",
+      "publicKeyBase58": "yX1rjAqqRhUk8BTgVDdFn9buUZ59pmRpJouc8raqAXztwooW3Gs7Fsy8GhDWUdZkdEFjdDbGk925zMSQ6xkrCbwzUrDnzpe8sPLB7gi15Gva4zRN77GiqRgDLtjRDVkXmmv"
+    }
+  ],
+  "authentication": [
+    {
+      "id": "did:web:PCF.PW:1A10#WEB1",
+      "controller": "did:web:PCF.PW:1A10",
+      "publicKeyBase58": "yX1rjAqqRhUk8BTgVDdFn9buUZ59pmRpJouc8raqAXztwooW3Gs7Fsy8GhDWUdZkdEFjdDbGk925zMSQ6xkrCbwzUrDnzpe8sPLB7gi15Gva4zRN77GiqRgDLtjRDVkXmmv"
+    }
+  ]
+}
+```
 
+The DID:WEB Resolver will point to that address (e.g. [`http://pcf.pw/1A10/did.json`](http://pcf.pw/1A10/did.json)) to download your public keys and verify the package. 
 
 ## 3. Preparing to Sign
 
