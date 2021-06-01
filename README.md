@@ -12,15 +12,15 @@ npm install @pathcheck/bbs-jxt-sdk --save
 
 ## 1. Generating Keys
 
-Generate private and public keys with: 
+Generate private and public keys with the provided script: 
 
 ```js
-npm run-script keys <YOUR_DOMAIN> <YOUR_KEY_NAME> <YOUR_CONTROLLER_NAME>
+npm explore @pathcheck/bbs-jxt-sdk -- npm run-script keys <YOUR_DOMAIN> <YOUR_KEY_NAME> <YOUR_CONTROLLER_NAME>
 ```
 
 Example: 
 ```js
-npm run-script keys PCF.PW 1A10 WEB1
+npm explore @pathcheck/bbs-jxt-sdk -- npm run-script keys PCF.PW 1A10 WEB1
 ```
 Returns: 
 ```js
