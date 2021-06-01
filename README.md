@@ -20,13 +20,13 @@ npm run-script keys <YOUR_DOMAIN> <YOUR_KEY_NAME> <YOUR_CONTROLLER_NAME>
 
 Example: 
 ```js
-npm run-script keys  PCF.PW 1A10 WEB1
+npm run-script keys PCF.PW 1A10 WEB1
 ```
 Returns: 
-```
-*******************************************************************************
+```js
+/*******************************************************************************
 Here are your SECRET keys. Key this private and use it to sign new packages.
-*******************************************************************************
+*******************************************************************************/
 {
   id: 'did:web:PCF.PW:1A10',
   controller: 'did:web:PCF.PW:1A10#WEB1',
@@ -35,9 +35,9 @@ Here are your SECRET keys. Key this private and use it to sign new packages.
 }
 
 
-*************************************************************************************************************
+/***************************************************************************************************
 Here are your PUBLIC DID document. Save this part as a .json and upload it to PCF.PW/1A10/did.json
-*************************************************************************************************************
+****************************************************************************************************/
 {
   '@context': 'https://w3id.org/security/v2',
   id: 'did:web:PCF.PW:1A10',
