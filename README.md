@@ -206,7 +206,7 @@ const TEST_PAYLOAD = {
 };
 ```
 
-Add keys to the Resolver Cache and call the signAndPack to create the URI for the QR Code: 
+Call the signAndPack function to create the URI for the QR Code: 
 
 ```js
 const {signAndPack, unpackAndVerify} = require('@pathcheck/bbs-jxt.sdk');
