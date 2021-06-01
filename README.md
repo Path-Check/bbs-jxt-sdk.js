@@ -99,7 +99,7 @@ const keyPair = {
 }
 ```
 
-And a JSON-LD Payload (We are using EU's Digital COVID Certificate as an example)
+And a JSON-LD Payload (We are using EU's Digital COVID Certificate, version 1.2.0, as an example)
 
 ```js
 const TEST_PAYLOAD = {
