@@ -209,7 +209,7 @@ const TEST_PAYLOAD = {
 Call the signAndPack function to create the URI for the QR Code: 
 
 ```js
-const {signAndPack, unpackAndVerify} = require('@pathcheck/bbs-jxt.sdk');
+const {signAndPack, unpackAndVerify} = require('@pathcheck/bbs-jxt-sdk');
 
 const qrUri = await signAndPack(TEST_PAYLOAD, keyPair);
 ```
