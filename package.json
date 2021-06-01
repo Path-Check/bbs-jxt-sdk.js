@@ -11,8 +11,8 @@
   "author": "Vitor Pamplona",
   "license": "GPL-3.0-only",
   "files": [
-    "lib/*.js",
-    "scripts/*.js"
+    "lib/**/*.js",
+    "scripts/**/*.js"
   ],
   "main": "lib/index.js",
   "module": "lib/main.js",
