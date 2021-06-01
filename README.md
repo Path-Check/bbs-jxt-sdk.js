@@ -60,7 +60,7 @@ Here are your PUBLIC DID document. Save this part as a .json and upload it to PC
 
 ## 2. Uploading Public Keys
 
-Copy the second segment (PUBLIC DID DOCUMENT) as a JSON file to your `domain/keyName/did.json`
+Copy the second segment (PUBLIC DID DOCUMENT) as a JSON file to your `domain/controllerName/did.json`
 
 ```json
 {
