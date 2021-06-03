@@ -396,6 +396,161 @@ const CombinedDGC = {
     }
 };
 
+const DGC_TEMPLATE = { 
+  "dgc:1": {
+    "columns": [
+      {"path": "credentialSubject.personalInformation.familyName", "encoder": "string"},
+      {"path": "credentialSubject.personalInformation.givenName", "encoder": "string"},
+      {"path": "credentialSubject.personalInformation.stdFamilyName", "encoder": "string"},
+      {"path": "credentialSubject.personalInformation.stdGivenName", "encoder": "string"},
+      {"path": "credentialSubject.personalInformation.birthDate", "encoder": "isodate-1900-base32"},
+      {"path": "credentialSubject.personalInformation.gender", "encoder": "string"},
+
+      {"path": "credentialSubject.proofOfVaccination", "encoder": "array", "encoder_param": "dgc.vaxComponent:1" },
+      {"path": "credentialSubject.proofOfCovidTest", "encoder": "array", "encoder_param": "dgc.testComponent:1" },
+      {"path": "credentialSubject.proofOfRecovery", "encoder": "array", "encoder_param": "dgc.recvComponent:1" },
+      
+      {"path": "issuanceDate", "encoder": "isodatetime-epoch-base32"},
+      {"path": "expirationDate", "encoder": "isodatetime-epoch-base32"},
+      {"path": "issuer", "encoder": "string", "prefix": ["did:web:"]},
+      {"path": "id", "encoder": "string"},
+      {"path": "proof.created", "encoder": "isodatetime-epoch-base32"},
+      {"path": "proof.verificationMethod", "encoder": "string", "prefix": ["did:web:"]},
+      {"path": "proof.proofValue", "encoder": "base64-base32"}
+    ],
+    "template": {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://w3id.org/dgc/v1",
+        "https://w3id.org/security/bbs/v1"
+      ],
+      "type": [
+        "VerifiableCredential"
+      ],
+      "credentialSubject": {
+        "@context": [
+          "https://w3id.org/dgc/v1"
+        ],
+        "type": "DGCCertificate",
+        "personalInformation": {
+          "@context": [
+              "https://w3id.org/dgc/v1"
+          ],
+          "type": "DGCSubject"
+        }
+      },
+      "proof": {
+        "type": "BbsBlsSignature2020",
+        "proofPurpose": "assertionMethod"
+      }
+    }
+  }, 
+  "dgc.testComponent:1": {
+    "columns": [
+      {"path": "id", "encoder": "string", "prefix": ["urn:uvci:"]},
+      {"path": "issuerName", "encoder": "string"},
+      {"path": "countryOfTestAdminstration", "encoder": "string"},
+      {"path": "testInformation.testType", "encoder": "string", "compact":["LP6464-4", "LP217198-3"]},
+      {"path": "testInformation.testResult", "encoder": "string", "compact": ["260415000", "260373001"]},
+      {"path": "testInformation.testCenter", "encoder": "string"},
+      {"path": "testInformation.diseaseTestedFrom", "encoder": "string", "compact": ["840539006"] },
+      {"path": "testInformation.testName", "encoder": "string"},
+      {"path": "testInformation.testManufacturer", "encoder": "string"},
+      {"path": "testInformation.sampleCollectionDateTime", "encoder": "isodatetime-epoch-base32"}
+    ],
+    "template": {
+      "@context": [
+        "https://w3id.org/dgc/v1"
+      ],
+      "type": "DGCProofOfCovidTest",
+      "testInformation": {
+        "@context": [
+            "https://w3id.org/dgc/v1"
+        ],          
+        "type": "DGCTestInformation"
+      }
+    }
+  },
+  "dgc.vaxComponent:1": {
+    "columns": [
+      {"path": "id", "encoder": "string", "prefix": ["urn:uvci:"]},
+      {"path": "issuerName", "encoder": "string"},
+      {"path": "countryOfVaccination", "encoder": "string"},
+      {"path": "vaccinationInformation.diseaseProtectedFrom", "encoder": "string", "compact": ["840539006"] },
+      {"path": "vaccinationInformation.prophylaxis", "encoder": "string", "compact": ["1119305005", "1119349007", "J07BX03"] },
+      {"path": "vaccinationInformation.dateOfVaccination", "encoder": "isodate-1900-base32"},
+      {"path": "vaccinationInformation.dose", "encoder": "integer-base32"},
+      {"path": "vaccinationInformation.totalDoses", "encoder": "integer-base32"},
+      {"path": "vaccinationInformation.marketingAuthHolder", "encoder": "string", "compact":[        
+          "ORG-100001699",
+          "ORG-100030215",
+          "ORG-100001417",
+          "ORG-100031184",
+          "ORG-100006270",
+          "ORG-100013793",
+          "ORG-100020693",
+          "ORG-100010771",
+          "ORG-100024420",
+          "ORG-100032020",
+          "Gamaleya-Research-Institute",
+          "Vector-Institute",
+          "Sinovac-Biotech",
+          "Bharat-Biotech"
+        ]},
+      {"path": "vaccinationInformation.medicinalProductName", "encoder": "string", "compact":[
+          "EU/1/20/1528",
+          "EU/1/20/1507",
+          "EU/1/21/1529",
+          "EU/1/20/1525",
+          "CVnCoV",
+          "NVX-CoV2373",
+          "Sputnik-V",
+          "Convidecia",
+          "EpiVacCorona",
+          "BBIBP-CorV",
+          "Inactivated-SARS-CoV-2-Vero-Cell",
+          "CoronaVac",
+          "Covaxin"
+        ]}
+    ],
+    "template": {
+      "@context": [
+        "https://w3id.org/dgc/v1"
+      ],
+      "type": "DGCProofOfVaccination",
+      "vaccinationInformation": {
+        "@context": [
+            "https://w3id.org/dgc/v1"
+        ],          
+        "type": "DGCVaccinationInformation"
+      }
+    }
+  }, 
+  "dgc.recvComponent:1": {
+    "columns": [
+      {"path": "id", "encoder": "string", "prefix": ["urn:uvci:"]},
+      {"path": "issuerName", "encoder": "string"},
+      {"path": "countryOfTest", "encoder": "string"},
+      {"path": "infectionInformation.diseaseRecoveredFrom", "encoder": "string", "compact": ["840539006"] },
+      {"path": "infectionInformation.dateFirstPositive", "encoder": "isodate-1900-base32"},
+      {"path": "infectionInformation.validFrom", "encoder": "isodate-1900-base32"},
+      {"path": "infectionInformation.validUntil", "encoder": "isodate-1900-base32"}
+    ],
+    "template": {
+      "@context": [
+        "https://w3id.org/dgc/v1"
+      ],
+      "type": "DGCProofOfRecovery",
+      "infectionInformation": {
+        "@context": [
+            "https://w3id.org/dgc/v1"
+        ],          
+        "type": "DGCInfectionInformation"
+      }
+    }
+  }
+};
+
 describe('DGC Soup to Nuts', function() { 
   it('should Sign Pack And Unpack Verify DGCProofOfRecovery', async function() {
     const uri = await signAndPack(DGCProofOfRecovery, mockKeyPair,"pcf.pw", "dgc.recv", "1");
@@ -453,8 +608,8 @@ describe('DGC Soup to Nuts', function() {
   });
   
   it('should Sign Pack And Unpack Verify a Combined DGC', async function() {
-    const uri = await signAndPack(CombinedDGC, mockKeyPair, "pcf.pw", "dgc", "1");
-    const resultJSON = await unpackAndVerify(uri);
+    const uri = await signAndPack(CombinedDGC, mockKeyPair, "pcf.pw", "dgc", "1", DGC_TEMPLATE);
+    const resultJSON = await unpackAndVerify(uri, DGC_TEMPLATE);
 
     expect(resultJSON.proof).to.not.be.null;
     expect(resultJSON.issuer).to.not.be.null;

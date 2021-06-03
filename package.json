@@ -20,7 +20,7 @@
     "@mattrglobal/jsonld-signatures-bbs": "^0.9.0",
     "cross-fetch": "^3.1.4",
     "esm": "^3.2.25",
-    "jsonxt": "^0.0.13"
+    "jsonxt": "^0.0.14"
   },
   "devDependencies": {
     "chai": "^4.3.4",
