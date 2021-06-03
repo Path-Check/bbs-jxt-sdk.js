@@ -14,6 +14,13 @@
     "lib/**/*.js",
     "scripts/**/*.js"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Path-Check/bbs-jxt-sdk.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Path-Check/bbs-jxt-sdk.js/issues"
+  },
   "main": "lib/index.js",
   "module": "lib/main.js",
   "dependencies": {
