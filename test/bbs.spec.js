@@ -396,7 +396,7 @@ const CombinedDGC = {
     }
 };
 
-const DGC_TEMPLATE = { 
+const DGC_TEMPLATE = {
   "dgc:1": {
     "columns": [
       {"path": "credentialSubject.personalInformation.familyName", "encoder": "string"},
@@ -412,10 +412,10 @@ const DGC_TEMPLATE = {
       
       {"path": "issuanceDate", "encoder": "isodatetime-epoch-base32"},
       {"path": "expirationDate", "encoder": "isodatetime-epoch-base32"},
-      {"path": "issuer", "encoder": "string", "prefix": ["did:web:"]},
+      {"path": "issuer", "encoder": "string", "prefix": ["did:web:PCF.PW:"]},
       {"path": "id", "encoder": "string"},
       {"path": "proof.created", "encoder": "isodatetime-epoch-base32"},
-      {"path": "proof.verificationMethod", "encoder": "string", "prefix": ["did:web:"]},
+      {"path": "proof.verificationMethod", "encoder": "string", "prefix": ["did:web:PCF.PW:"]},
       {"path": "proof.proofValue", "encoder": "base64-base32"}
     ],
     "template": {
