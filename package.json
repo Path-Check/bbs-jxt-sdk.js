@@ -1,6 +1,6 @@
 {
   "name": "@pathcheck/bbs-jxt-sdk",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Verifiable QR SDK for BBS+ Vaccination Credentials with JSON-XT",
   "private": false,
   "scripts": {
